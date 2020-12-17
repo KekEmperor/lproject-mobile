@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ListEventActivity"></activity>
+        <activity android:name=".ListEventActivity" />
         <activity
             android:name=".ListActivity"
             android:parentActivityName=".MenuActivity" />

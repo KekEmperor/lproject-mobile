@@ -65,7 +65,7 @@ class BlankFragment : Fragment() {
         root.cityTextView.text = city
 
         root.setOnClickListener {
-            var i: Intent = if (param6 == "Registered") {
+            var i: Intent = if (param6 != "Registered") {
                 Intent(activity?.applicationContext, CatalogEventActivity::class.java)
             } else {
                 Intent(activity?.applicationContext, ListEventActivity::class.java)
@@ -87,11 +87,12 @@ class BlankFragment : Fragment() {
          * @param param3 City.
          * @param param4 _id.
          * @param param5 Event JSON string.
+         * @param param6 What to show
          * @return A new instance of fragment BlankFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String, param3: String, param4: String, param5: String) =
+        fun newInstance(param1: String, param2: String, param3: String, param4: String, param5: String, param6: String) =
             BlankFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
@@ -99,6 +100,7 @@ class BlankFragment : Fragment() {
                     putString(ARG_PARAM3, param3)
                     putString(ARG_PARAM4, param4)
                     putString(ARG_PARAM5, param5)
+                    putString(ARG_PARAM6, param6)
                 }
             }
     }

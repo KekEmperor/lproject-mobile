@@ -33,7 +33,8 @@ class CatalogActivity : AppCompatActivity() {
                         item.getString("startDate"),
                         item.getString("locationCountry") + ", " + item.getString("locationCity"),
                         item.getString("_id"),
-                        events[i].toString()
+                        events[i].toString(),
+                        "Unregistered"
                     )
 
                     LinearLayout.LayoutParams(

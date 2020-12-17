@@ -1,7 +1,6 @@
 package com.example.lproject_mobile
 
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

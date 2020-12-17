@@ -43,3 +43,16 @@ suspend fun registerForEvent(eventId: String, sp: SharedPreferences): String {
         return data.status.toString().split(' ')[0]
     }
 }
+
+suspend fun getVisitsByVisitor(eventId: String, sp: SharedPreferences): JSONArray {
+    HttpClient().use {
+        val data = it.get<HttpResponse>("http://10.0.2.2:30030/event/" + eventId + "/visitor/" + sp.getString("visitorId", "") + "/getVisits")
+        var events = JSONArray()
+
+        if (data.status == HttpStatusCode.OK) {
+            events = JSONArray(data.readText())
+        }
+
+        return events
+    }
+}
