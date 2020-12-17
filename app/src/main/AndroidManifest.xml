@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ListActivity"></activity>
-        <activity android:name=".Activity" />
-        <activity android:name=".UserEventActivity" />
-        <activity android:name=".CatalogEventActivity" />
+        <activity android:name=".ListEventActivity"></activity>
+        <activity
+            android:name=".ListActivity"
+            android:parentActivityName=".MenuActivity" />
+        <activity
+            android:name=".CatalogEventActivity"
+            android:parentActivityName=".CatalogActivity" />
         <activity
             android:name=".CatalogActivity"
             android:parentActivityName=".MenuActivity" />

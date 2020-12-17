@@ -18,5 +18,10 @@ class MenuActivity : AppCompatActivity() {
             val i = Intent(this, CatalogActivity::class.java)
             startActivity(i)
         }
+
+        myEventsButton.setOnClickListener() {
+            val i = Intent(this, ListActivity::class.java)
+            startActivity(i)
+        }
     }
 }

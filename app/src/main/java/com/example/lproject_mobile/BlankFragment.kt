@@ -3,13 +3,11 @@ package com.example.lproject_mobile
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import kotlinx.android.synthetic.main.fragment_blank.*
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_blank.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -19,6 +17,7 @@ private const val ARG_PARAM2 = "param2"
 private const val ARG_PARAM3 = "param3"
 private const val ARG_PARAM4 = "param4"
 private const val ARG_PARAM5 = "param5"
+private const val ARG_PARAM6 = "param6"
 
 /**
  * A simple [Fragment] subclass.
@@ -32,6 +31,7 @@ class BlankFragment : Fragment() {
     private var param3: String? = null
     private var param4: String? = null
     private var param5: String? = null
+    private var param6: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +41,7 @@ class BlankFragment : Fragment() {
             param3 = it.getString(ARG_PARAM3)
             param4 = it.getString(ARG_PARAM4)
             param5 = it.getString(ARG_PARAM5)
+            param6 = it.getString(ARG_PARAM6)
         }
     }
 
@@ -64,7 +65,11 @@ class BlankFragment : Fragment() {
         root.cityTextView.text = city
 
         root.setOnClickListener {
-            val i = Intent(activity?.applicationContext, CatalogEventActivity::class.java)
+            var i: Intent = if (param6 == "Registered") {
+                Intent(activity?.applicationContext, CatalogEventActivity::class.java)
+            } else {
+                Intent(activity?.applicationContext, ListEventActivity::class.java)
+            }
             i.putExtra("eventJSON", param5)
             startActivity(i)
         }

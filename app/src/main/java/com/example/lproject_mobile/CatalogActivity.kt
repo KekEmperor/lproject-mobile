@@ -1,11 +1,10 @@
 package com.example.lproject_mobile
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -48,6 +47,5 @@ class CatalogActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 }
