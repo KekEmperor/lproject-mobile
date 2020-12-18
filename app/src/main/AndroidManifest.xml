@@ -3,6 +3,7 @@
     package="com.example.lproject_mobile">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ListEventActivity" />
+        <activity
+            android:name=".ListEventActivity"
+            android:parentActivityName=".ListActivity" />
         <activity
             android:name=".ListActivity"
             android:parentActivityName=".MenuActivity" />
