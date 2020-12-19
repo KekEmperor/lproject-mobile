@@ -16,23 +16,23 @@ class CatalogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalog)
-        supportActionBar?.title = "Каталог подій"
+
+        supportActionBar?.title = getString(R.string.catalog)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         GlobalScope.launch(Dispatchers.IO) {
             val events = getAllEvents()
 
             for (i in 0 until events.length()) {
-                val item = JSONObject(events[i].toString())
-
-                var startDate = ZonedDateTime.parse(item.getString("startDate"))
+                val eventItem = JSONObject(events[i].toString())
+                var startDate = ZonedDateTime.parse(eventItem.getString("startDate"))
 
                 if (startDate > ZonedDateTime.now()) {
                     val ef = BlankFragment.newInstance(
-                        item.getString("name"),
-                        item.getString("startDate"),
-                        item.getString("locationCountry") + ", " + item.getString("locationCity"),
-                        item.getString("_id"),
+                        eventItem.getString("name"),
+                        eventItem.getString("startDate"),
+                        eventItem.getString("locationCountry") + ", " + eventItem.getString("locationCity"),
+                        eventItem.getString("_id"),
                         events[i].toString(),
                         "Unregistered"
                     )

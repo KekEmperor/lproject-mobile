@@ -28,11 +28,11 @@ class CatalogEventActivity : AppCompatActivity() {
         nameTextView.text = event.getString("name")
 
         val startDate = ZonedDateTime.parse(event.getString("startDate"))
-            .format(DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm"))
+            .format(DateTimeFormatter.ofPattern(getString(R.string.date_formatter) + ", HH:mm"))
         startDateTextView.text = startDate
 
         val finishDate = ZonedDateTime.parse(event.getString("finishDate"))
-            .format(DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm"))
+            .format(DateTimeFormatter.ofPattern(getString(R.string.date_formatter) + ", HH:mm"))
         finishDateTextView.text = finishDate
 
         val address =

@@ -55,7 +55,7 @@ class BlankFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_blank, container, false)
 
         val date = LocalDate.parse(param2?.split('T')?.get(0))
-        val dateString = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+        val dateString = date.format(DateTimeFormatter.ofPattern(getString(R.string.date_formatter)))
         root.dateTextView.text = dateString
 
         val name: String = param1 ?: ""

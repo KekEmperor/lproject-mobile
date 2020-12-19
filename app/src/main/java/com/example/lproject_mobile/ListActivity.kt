@@ -17,7 +17,8 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
-        supportActionBar?.title = "Мої події"
+
+        supportActionBar?.title = getString(R.string.my_events)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val sp: SharedPreferences = getSharedPreferences("idInfo", Context.MODE_PRIVATE)
 
@@ -25,14 +26,14 @@ class ListActivity : AppCompatActivity() {
             val events = getAllEvents()
 
             for (i in 0 until events.length()) {
-                val item = JSONObject(events[i].toString())
+                val eventItem = JSONObject(events[i].toString())
 
-                if (getRegistration(item.getString("_id"), sp)) {
+                if (getRegistration(eventItem.getString("_id"), sp)) {
                     val ef = BlankFragment.newInstance(
-                        item.getString("name"),
-                        item.getString("startDate"),
-                        item.getString("locationCountry") + ", " + item.getString("locationCity"),
-                        item.getString("_id"),
+                        eventItem.getString("name"),
+                        eventItem.getString("startDate"),
+                        eventItem.getString("locationCountry") + ", " + eventItem.getString("locationCity"),
+                        eventItem.getString("_id"),
                         events[i].toString(),
                         "Registered"
                     )

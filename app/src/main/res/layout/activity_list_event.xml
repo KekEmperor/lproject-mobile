@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="Назва заходу:  "
+        android:text="@string/event_name"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:text="Дата і час початку заходу:  "
+        android:text="@string/start_date_time"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="Адреса проведення:"
+        android:text="@string/address"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
@@ -90,7 +90,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_weight="1"
-        android:text="Ваші відвідування локацій:"
+        android:text="@string/your_visits"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressTextView" />

@@ -15,18 +15,14 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import android.nfc.NfcAdapter
-import android.util.Log
 import android.widget.*
 
 class ListEventActivity : AppCompatActivity() {
-    private lateinit var nfcAdapter: NfcAdapter
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_event)
-        supportActionBar?.title = "Перегляд моєї події"
+        supportActionBar?.title = getString(R.string.see_my_event)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val sp = getSharedPreferences("idInfo", Context.MODE_PRIVATE)
 
@@ -35,7 +31,7 @@ class ListEventActivity : AppCompatActivity() {
         nameTextView.text = event.getString("name")
 
         val startDate = ZonedDateTime.parse(event.getString("startDate"))
-            .format(DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm"))
+            .format(DateTimeFormatter.ofPattern(getString(R.string.date_formatter) + ", HH:mm"))
         startDateTextView.text = startDate
 
         val address =
@@ -66,9 +62,9 @@ class ListEventActivity : AppCompatActivity() {
                         tv.text =
                             location.getString("name") + ": " +
                                     ZonedDateTime.parse(item.getString("startTime"))
-                                        .format(DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm:ss")) + " - " +
+                                        .format(DateTimeFormatter.ofPattern(getString(R.string.date_formatter) + " HH:mm:ss")) + " - " +
                                     ZonedDateTime.parse(item.getString("finishTime"))
-                                        .format(DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm:ss"))
+                                        .format(DateTimeFormatter.ofPattern(getString(R.string.date_formatter) + " HH:mm:ss"))
                         tv.layoutParams = ll
                         visitsHolder.addView(tv)
                     }
@@ -81,8 +77,6 @@ class ListEventActivity : AppCompatActivity() {
                     for (i in 0 until locations.length()) {
                         arrayLoc += (JSONObject(locations[i].toString()).getString("name"))
                     }
-
-                    Log.i("arrayloc", arrayLoc[0])
 
                     runOnUiThread {
                         val spinner = Spinner(applicationContext)
@@ -102,14 +96,11 @@ class ListEventActivity : AppCompatActivity() {
                         visitsHolder.addView(spinner)
 
                         val button = Button(applicationContext)
-                        button.text = "Позначити присутність на локації"
+                        button.text = getString(R.string.set_presence)
 
                         button.setOnClickListener() {
-                            if (sp.getString(
-                                    "visitStatus",
-                                    ""
-                                ) == "start" || sp.getString("visitStatus", "") == ""
-                            ) {
+                            if (sp.getString("visitStatus", "") == "start"
+                                || sp.getString("visitStatus", "") == "") {
                                 sp.edit().putString("visitStatus", "finish").apply()
                                 sp.edit().putString(
                                     "locId",
